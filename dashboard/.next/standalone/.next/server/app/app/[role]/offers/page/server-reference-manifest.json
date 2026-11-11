@@ -1,0 +1,20 @@
+{
+  "node": {
+    "4056ecd7985b76fc92ea1cd2ffd57123a8d1ed811b": {
+      "workers": {
+        "app/app/[role]/offers/page": {
+          "moduleId": 87417,
+          "async": false,
+          "exportedName": "setLocaleAction",
+          "filename": "src/app/actions.ts"
+        }
+      },
+      "layer": {
+        "app/app/[role]/offers/page": "action-browser"
+      },
+      "exportedName": "setLocaleAction",
+      "filename": "src/app/actions.ts"
+    }
+  },
+  "edge": {}
+}

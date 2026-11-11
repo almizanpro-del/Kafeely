@@ -1,0 +1,41 @@
+{
+  "version": 3,
+  "middleware": {
+    "/": {
+      "files": [
+        "server/edge/chunks/[root-of-the-server]__2112c9b3._.js",
+        "server/edge/chunks/[root-of-the-server]__ef2f1638._.js",
+        "server/edge/chunks/turbopack-node_modules_next_dist_esm_build_templates_edge-wrapper_470b31c0.js"
+      ],
+      "name": "middleware",
+      "page": "/",
+      "matchers": [
+        {
+          "regexp": "^(?:\\/(_next\\/data\\/[^/]{1,}))?\\/app(?:\\/((?:[^\\/#\\?]+?)(?:\\/(?:[^\\/#\\?]+?))*))?(\\\\.json)?[\\/#\\?]?$",
+          "originalSource": "/app/:path*"
+        },
+        {
+          "regexp": "^(?:\\/(_next\\/data\\/[^/]{1,}))?\\/sign-in(\\\\.json)?[\\/#\\?]?$",
+          "originalSource": "/sign-in"
+        },
+        {
+          "regexp": "^(?:\\/(_next\\/data\\/[^/]{1,}))?\\/api\\/auth(?:\\/((?:[^\\/#\\?]+?)(?:\\/(?:[^\\/#\\?]+?))*))?(\\\\.json)?[\\/#\\?]?$",
+          "originalSource": "/api/auth/:path*"
+        }
+      ],
+      "wasm": [],
+      "assets": [],
+      "env": {
+        "__NEXT_BUILD_ID": "G0TTEa0NN5nH8asTbhfeu",
+        "NEXT_SERVER_ACTIONS_ENCRYPTION_KEY": "tOyFkHpdhTnTkcOGILJZyLJPsyiNirke7xyVDdQyGho=",
+        "__NEXT_PREVIEW_MODE_ID": "a5b666b23d6f614f6a20dc7f7252214f",
+        "__NEXT_PREVIEW_MODE_ENCRYPTION_KEY": "ade78df7ab64e97f45b20b18f748b9378c36f17796a1f8226eb771083c124845",
+        "__NEXT_PREVIEW_MODE_SIGNING_KEY": "030e9b0f19302f0681c9cb3bf350f675d834dc2967c6524e1818f17a70627438"
+      }
+    }
+  },
+  "sortedMiddleware": [
+    "/"
+  ],
+  "functions": {}
+}
