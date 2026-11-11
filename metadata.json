@@ -1,0 +1,6 @@
+{
+  "name": "Kafeely | Dubai Premium Rental Protection Platform",
+  "description": "Pre-launch platform introducing rental income protection for Dubai's premium residential property market. Join the owner or tenant waitlist or express partner/investor interest.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

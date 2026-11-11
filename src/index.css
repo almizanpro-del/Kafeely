@@ -1,0 +1,100 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-serif: 'Cormorant Garamond', 'Amiri', Georgia, serif;
+    --font-sans: 'Plus Jakarta Sans', 'Cairo', system-ui, -apple-system, sans-serif;
+    --font-arabic-serif: 'Amiri', 'Cormorant Garamond', serif;
+    --font-arabic-sans: 'Cairo', 'Plus Jakarta Sans', sans-serif;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: #0b132b;
+    color: #e2e8f0;
+  }
+
+  [dir="rtl"] {
+    font-family: var(--font-arabic-sans);
+  }
+
+  [dir="rtl"] .font-serif {
+    font-family: var(--font-arabic-serif);
+  }
+}
+
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+.font-sans {
+  font-family: var(--font-sans);
+}
+
+/* Custom subtle scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0b132b;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1e2c4f;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2b3e70;
+}
+
+/* Prevent unwanted browser scroll anchoring jumps on dynamic slide updates */
+html, body {
+  overflow-anchor: none;
+}
+
+@keyframes slideProgress {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+.animate-slide-progress {
+  animation: slideProgress 6.5s linear forwards;
+}
+
+/* Traveling Border Beam and Interior Light Beam */
+@keyframes borderBeamRotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes lightBeamPulse {
+  0%, 100% {
+    opacity: 0.25;
+    transform: translate(-10%, -10%) scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: translate(12%, 10%) scale(1.2);
+  }
+}
+
+.animate-border-beam {
+  animation: borderBeamRotate 9s linear infinite;
+}
+
+.animate-light-beam {
+  animation: lightBeamPulse 6s ease-in-out infinite;
+}
+
+
