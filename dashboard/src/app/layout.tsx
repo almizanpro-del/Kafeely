@@ -1,34 +1,15 @@
 import type { Metadata, Viewport } from "next";
-import { Cormorant_Garamond, Plus_Jakarta_Sans, Cairo, Amiri } from "next/font/google";
+import "./fonts.css";
 import "./globals.css";
 import { Providers } from "./providers";
 import { Toaster } from "@/components/ui/sonner";
 import { getLocale } from "@/i18n";
 import { dirOf } from "@/i18n/config";
 
-const cormorant = Cormorant_Garamond({
-  variable: "--font-cormorant",
-  subsets: ["latin"],
-  weight: ["500", "600", "700"],
-});
-
-const jakarta = Plus_Jakarta_Sans({
-  variable: "--font-jakarta",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-});
-
-const cairo = Cairo({
-  variable: "--font-cairo",
-  subsets: ["arabic"],
-  weight: ["400", "500", "600", "700"],
-});
-
-const amiri = Amiri({
-  variable: "--font-amiri",
-  subsets: ["arabic"],
-  weight: ["400", "700"],
-});
+// Fonts are self-hosted via ./fonts.css (@font-face + /fonts/*.woff2).
+// The CSS variables --font-jakarta / --font-cormorant / --font-cairo / --font-amiri
+// are declared there and consumed by globals.css (--font-sans / --font-display,
+// with the RTL override swapping in Cairo / Amiri).
 
 export const metadata: Metadata = {
   title: {
@@ -51,12 +32,7 @@ export default async function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   const locale = await getLocale();
   return (
-    <html
-      lang={locale}
-      dir={dirOf(locale)}
-      suppressHydrationWarning
-      className={`${cormorant.variable} ${jakarta.variable} ${cairo.variable} ${amiri.variable}`}
-    >
+    <html lang={locale} dir={dirOf(locale)} suppressHydrationWarning>
       <body className="antialiased bg-background text-foreground min-h-screen">
         <Providers>
           {children}

@@ -1,7 +1,7 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": "nextjs",
-  "buildCommand": "prisma generate && prisma db execute --file prisma/migrate-2026-11-12.sql --schema prisma/schema.prisma && bun prisma/seed.ts && next build",
+  "buildCommand": "next build",
   "headers": [
     {
       "source": "/(.*)",
