@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   },
   description:
     "Rental income protection for Dubai's premium residential property market. Multi-role dashboards for landlords, tenants, brokers, agents, facility management and leasing teams.",
-  icons: { icon: "/kafeely.svg" },
+  icons: { icon: "/kafeely-mark.png" },
 };
 
 export const viewport: Viewport = {

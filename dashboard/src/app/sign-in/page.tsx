@@ -21,7 +21,7 @@ export default async function SignInPage() {
         <div className="mb-8 text-center">
           <a href="/" className="inline-flex items-center gap-2.5">
             { }
-            <img src="/kafeely.svg" alt="Kafeely" className="size-10" />
+            <img src="/kafeely-logo.png" alt="Kafeely — safe home rental" className="h-14 w-auto" />
           </a>
           <h1 className="mt-4 font-display text-3xl font-semibold tracking-tight">{dict.auth.welcome}</h1>
           <p className="mt-1.5 text-sm text-muted-foreground">{dict.auth.signInSubtitle}</p>

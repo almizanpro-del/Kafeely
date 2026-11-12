@@ -91,7 +91,7 @@ export function Sidebar({
         <Link href="/app" className="flex items-center gap-2.5" onClick={onMobileClose}>
           <span className="grid size-9 place-items-center rounded-lg border border-[#c5a880]/40 bg-[#0d1834]">
             { }
-            <img src="/kafeely.svg" alt="" className="size-6" />
+            <img src="/kafeely-mark.png" alt="Kafeely" className="size-7" />
           </span>
           {!collapsed && (
             <span className="min-w-0">

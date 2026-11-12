@@ -20,7 +20,7 @@ export default async function PortalPage() {
       <header className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between px-4 sm:px-6">
         <span className="flex items-center gap-2.5">
           { }
-          <img src="/kafeely.svg" alt="Kafeely" className="size-8" />
+          <img src="/kafeely-mark.png" alt="Kafeely" className="size-8" />
           <span className="font-display text-xl font-semibold tracking-wide">{dict.common.brand}</span>
         </span>
         <Button asChild size="sm" className="bg-[#c5a880] font-medium text-[#0b132b] hover:bg-[#d4b98f]">
