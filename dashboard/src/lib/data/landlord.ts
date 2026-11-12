@@ -103,6 +103,7 @@ export async function getLandlordDocuments(landlordId: string) {
   return docs.map((d) => ({
     id: d.id, name: d.name, category: d.category, sizeKb: d.sizeKb, status: d.status,
     uploadedAt: d.uploadedAt.toISOString(), unitCode: d.unit?.code ?? null,
+    hasFile: d.fileData !== null, mimeType: d.mimeType, fileName: d.fileName,
   }));
 }
 

@@ -32,7 +32,7 @@ export default async function DocumentsPage({ params }: { params: Promise<{ role
     return (
       <>
         <PageHeader title={dict.landlord.documents.title} description={dict.landlord.documents.desc} />
-        <DocumentsView docs={docs} dict={dict} locale={locale} canUpload={false} />
+        <DocumentsView docs={docs} dict={dict} locale={locale} />
       </>
     );
   }

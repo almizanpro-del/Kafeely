@@ -3,36 +3,24 @@
 import * as React from "react";
 import { useRouter, usePathname } from "next/navigation";
 import { useMutation } from "@tanstack/react-query";
-import { LogOut, Settings, Repeat, ChevronDown } from "lucide-react";
+import { LogOut, Settings, ChevronDown } from "lucide-react";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import {
   DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel,
   DropdownMenuSeparator, DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { api } from "@/lib/api-client";
-import { ROLES, type Role } from "@/lib/types";
 import { initialsOf } from "@/lib/format";
 import type { Dictionary } from "@/i18n";
 import { toast } from "sonner";
 
-const DEMO_CREDS: Record<Role, string> = {
-  super_admin: "zaid@kafeely.ae",
-  landlord: "khalid@example.ae",
-  tenant: "emma.thompson@example.com",
-  broker: "sarah.haddad@metropremier.ae",
-  agent: "yousef.amiri@metropremier.ae",
-  facility: "laurent@primeserve.ae",
-  leasing: "aisha@citywideleasing.ae",
-};
-
 export function UserMenu({
-  fullName, avatarSeed, roleLabel, dict, showRoleSwitch,
+  fullName, avatarSeed, roleLabel, dict,
 }: {
   fullName: string;
   avatarSeed: string;
   roleLabel: string;
   dict: Dictionary;
-  showRoleSwitch: boolean;
 }) {
   const router = useRouter();
   const pathname = usePathname();
@@ -45,14 +33,6 @@ export function UserMenu({
     onSuccess: () => {
       toast.success(dict.toast.loggedOut);
       router.push("/sign-in");
-      router.refresh();
-    },
-  });
-
-  const switchRole = useMutation({
-    mutationFn: (role: Role) => api("/api/auth/switch-role", { body: { role } }),
-    onSuccess: (_d, role) => {
-      router.push(`/app/${role.replace("_", "-")}`);
       router.refresh();
     },
   });
@@ -82,26 +62,6 @@ export function UserMenu({
           <Settings className="size-4" aria-hidden />
           {dict.profile.title}
         </DropdownMenuItem>
-        {showRoleSwitch && (
-          <>
-            <DropdownMenuSeparator className="bg-border" />
-            <DropdownMenuLabel className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
-              Demo · switch role
-            </DropdownMenuLabel>
-            <div className="grid max-h-56 grid-cols-1 overflow-y-auto thin-scroll">
-              {ROLES.filter((r) => r !== "super_admin" || roleLabel !== "Super Admin").map((r) => (
-                <DropdownMenuItem
-                  key={r}
-                  onClick={() => switchRole.mutate(r)}
-                  className="gap-2 text-xs text-muted-foreground"
-                >
-                  <Repeat className="size-3.5" aria-hidden />
-                  {dict.role[r].label}
-                </DropdownMenuItem>
-              ))}
-            </div>
-          </>
-        )}
         <DropdownMenuSeparator className="bg-border" />
         <DropdownMenuItem
           onClick={() => logout.mutate()}

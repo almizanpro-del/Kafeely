@@ -5,6 +5,7 @@
  */
 import { PrismaClient } from "@prisma/client";
 import { randomBytes, scryptSync } from "crypto";
+import { demoPdf } from "./pdf";
 
 const db = new PrismaClient();
 
@@ -365,13 +366,17 @@ async function main() {
     ["Insurance Endorsement Letter", "other", "landlord", null],
   ];
   for (const [name, category, ownerRole, leaseId] of docSets) {
+    const status = pick(["verified", "verified", "verified", "pending"]);
+    const pdf = demoPdf(name, category, status);
     await db.document.create({
-      data: { name, category, ownerRole, ownerId: ownerRole === "tenant" ? users.tenant.id : users.landlord.id, unitId: anchor.id, leaseId, sizeKb: int(120, 4200), status: pick(["verified", "verified", "verified", "pending"]) },
+      data: { name, category, ownerRole, ownerId: ownerRole === "tenant" ? users.tenant.id : users.landlord.id, unitId: anchor.id, leaseId, sizeKb: Math.max(1, Math.round(pdf.length / 1024)), status, fileName: `${name.replace(/[^\w\u0400-\u04FF .()-]/g, "-")}.pdf`, mimeType: "application/pdf", fileData: pdf },
     });
   }
   for (const l of leases.slice(2, 12)) {
+    const name = `Tenancy Contract — ${l.unitId.slice(0, 10)}`;
+    const pdf = demoPdf(name, "lease", "verified");
     await db.document.create({
-      data: { name: `Tenancy Contract — ${l.unitId.slice(0, 10)}`, category: "lease", ownerRole: "tenant", ownerId: l.tenantId, unitId: l.unitId, leaseId: l.id, sizeKb: int(400, 1800), status: "verified" },
+      data: { name, category: "lease", ownerRole: "tenant", ownerId: l.tenantId, unitId: l.unitId, leaseId: l.id, sizeKb: Math.max(1, Math.round(pdf.length / 1024)), status: "verified", fileName: `${name.replace(/[^\w\u0400-\u04FF .()-]/g, "-")}.pdf`, mimeType: "application/pdf", fileData: pdf },
     });
   }
 

@@ -95,7 +95,6 @@ export function AppShell({
               avatarSeed={avatarSeed}
               roleLabel={dict.role[role].label}
               dict={dict}
-              showRoleSwitch
             />
           </div>
         </header>

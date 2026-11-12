@@ -243,6 +243,9 @@ model Document {
   sizeKb     Int      @default(240)
   status     String   @default("verified")
   uploadedAt DateTime @default(now())
+  fileName   String?
+  mimeType   String?
+  fileData   Bytes?
 }
 
 /// Payment status: paid | pending | overdue | upcoming
